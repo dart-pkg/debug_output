@@ -59,7 +59,7 @@ text, enabled: true}
       expect(
         result ==
             r'''
-[YAML]```
+[YAML]
 name: Joe
 url:
 ids:
@@ -72,7 +72,7 @@ desc: |-
   a multiline
   text
 enabled: true
-```[/YAML]
+[/YAML]
 ''',
         isTrue,
       );

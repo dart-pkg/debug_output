@@ -17,7 +17,7 @@ List<String> _textToLines(String s) {
 String echo(dynamic x, {String? title, bool silent = false, String? type}) {
   String json = switch (type) {
     'json' => text_serializer.toJson(x, '  '),
-    'yaml' => '[YAML]```\n${text_serializer.toYaml(x)}```[/YAML]',
+    'yaml' => '[YAML]\n${text_serializer.toYaml(x)}[/YAML]',
     _ => (x is String) ? '`$x`' : '$x',
   };
   String output;
@@ -35,7 +35,7 @@ String echo(dynamic x, {String? title, bool silent = false, String? type}) {
 String dump(dynamic x, {String? title, bool silent = false, String? type}) {
   String json = switch (type) {
     'json' => text_serializer.toJson(x, '  '),
-    'yaml' => '[YAML]```\n${text_serializer.toYaml(x)}```[/YAML]',
+    'yaml' => '[YAML]\n${text_serializer.toYaml(x)}[/YAML]',
     _ => (x is String) ? '`$x`' : '$x',
   };
   final lines = _textToLines(StackTrace.current.toString());
