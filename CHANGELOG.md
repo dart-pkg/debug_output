@@ -21,3 +21,14 @@
 -version: 2025.502.1946
 +version: 2025.502.1956
 ```
+
+## 2025.502.2007
+
+- Introduced _adjustTextNewlines()
+
+```
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+-version: 2025.502.1956
++version: 2025.502.2007
+```

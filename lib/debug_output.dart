@@ -14,6 +14,13 @@ List<String> _textToLines(String s) {
   return $lines;
 }
 
+/// Replace non-unix new lines in a string to unix newlines
+String _adjustTextNewlines(String s) {
+  s = s.replaceAll('\r\n', '\n');
+  s = s.replaceAll('\r', '\n');
+  return s;
+}
+
 String echo(dynamic x, {String? title, bool silent = false, String? type}) {
   String json = switch (type) {
     'json' => text_serializer.toJson(x, '  '),
@@ -26,6 +33,7 @@ String echo(dynamic x, {String? title, bool silent = false, String? type}) {
   } else {
     output = '$title ==> $json';
   }
+  output = _adjustTextNewlines(output);
   if (!silent) {
     print(output);
   }
@@ -58,6 +66,7 @@ String dump(dynamic x, {String? title, bool silent = false, String? type}) {
   } else {
     output = '[$mode] $lineInfo\n$title ==> $json';
   }
+  output = _adjustTextNewlines(output);
   if (!silent) {
     print(output);
   }
