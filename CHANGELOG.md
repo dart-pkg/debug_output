@@ -55,3 +55,14 @@
 -version: 2025.504.1609
 +version: 2025.504.1641
 ```
+
+## 2025.504.1731
+
+- Changed string formats of echo() and dump()
+
+```
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+-version: 2025.504.1641
++version: 2025.504.1731
+```

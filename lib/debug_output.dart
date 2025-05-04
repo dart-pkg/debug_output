@@ -50,7 +50,8 @@ String echo(dynamic x, {String? title, bool silent = false, String? type}) {
   if (!silent) {
     print(output);
   }
-  return '$output\n';
+  //return '$output\n';
+  return output;
 }
 
 String dump(dynamic x, {String? title, bool silent = false, String? type}) {
@@ -79,5 +80,6 @@ String dump(dynamic x, {String? title, bool silent = false, String? type}) {
   if (!silent) {
     print(output);
   }
-  return '$output\n';
+  //return '$output\n';
+  return output;
 }

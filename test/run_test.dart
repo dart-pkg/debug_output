@@ -31,22 +31,21 @@ main() {
         equals(r'''
 {name: Joe, url: null, ids: [10, 20, 30, null], desc: This is
 a multiline
-text, enabled: true}
-'''),
+text, enabled: true}'''),
       );
       result = echo(testData, type: 'flatJson');
       expect(
         result,
-        equals(r'''
-{"name":"Joe","url":null,"ids":[10,20,30,null],"desc":"This is\na multiline\ntext","enabled":true}
-'''),
+        equals(
+          r'''{"name":"Joe","url":null,"ids":[10,20,30,null],"desc":"This is\na multiline\ntext","enabled":true}''',
+        ),
       );
       result = echo(testData, type: 'flat_json');
       expect(
         result,
-        equals(r'''
-{"name":"Joe","url":null,"ids":[10,20,30,null],"desc":"This is\na multiline\ntext","enabled":true}
-'''),
+        equals(
+          r'''{"name":"Joe","url":null,"ids":[10,20,30,null],"desc":"This is\na multiline\ntext","enabled":true}''',
+        ),
       );
       result = echo(testData, type: 'json');
       expect(
@@ -63,8 +62,7 @@ text, enabled: true}
   ],
   "desc": "This is\na multiline\ntext",
   "enabled": true
-}
-'''),
+}'''),
       );
       result = echo(testData, type: 'yaml');
       expect(
@@ -83,18 +81,16 @@ desc: |-
   a multiline
   text
 enabled: true
-[/YAML]
-'''),
+[/YAML]'''),
       );
       result = dump(testData);
       expect(
         result,
         equals(r'''
-[DEBUG] @ main.<anonymous closure>.<anonymous closure> (file:///D:/home11/pub/debug_output/test/run_test.dart:89:16)
+[DEBUG] @ main.<anonymous closure>.<anonymous closure> (file:///D:/home11/pub/debug_output/test/run_test.dart:86:16)
 {name: Joe, url: null, ids: [10, 20, 30, null], desc: This is
 a multiline
-text, enabled: true}
-'''),
+text, enabled: true}'''),
       );
     });
   });
