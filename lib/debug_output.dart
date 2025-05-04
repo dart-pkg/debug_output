@@ -28,6 +28,7 @@ String _toPrintable(dynamic x, String? type) {
   try {
     return switch (type) {
       'flatjson' => text_serializer.toJson(x),
+      'flat_json' => text_serializer.toJson(x),
       'json' => text_serializer.toJson(x, '  '),
       'yaml' => '[YAML]\n${text_serializer.toYaml(x)}[/YAML]',
       _ => (x is String) ? '`$x`' : '$x',

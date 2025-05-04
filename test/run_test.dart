@@ -41,6 +41,13 @@ text, enabled: true}
 {"name":"Joe","url":null,"ids":[10,20,30,null],"desc":"This is\na multiline\ntext","enabled":true}
 '''),
       );
+      result = echo(testData, type: 'flat_json');
+      expect(
+        result,
+        equals(r'''
+{"name":"Joe","url":null,"ids":[10,20,30,null],"desc":"This is\na multiline\ntext","enabled":true}
+'''),
+      );
       result = echo(testData, type: 'json');
       expect(
         result,
@@ -83,7 +90,7 @@ enabled: true
       expect(
         result,
         equals(r'''
-[DEBUG] @ main.<anonymous closure>.<anonymous closure> (file:///D:/home11/pub/debug_output/test/run_test.dart:82:16)
+[DEBUG] @ main.<anonymous closure>.<anonymous closure> (file:///D:/home11/pub/debug_output/test/run_test.dart:89:16)
 {name: Joe, url: null, ids: [10, 20, 30, null], desc: This is
 a multiline
 text, enabled: true}
