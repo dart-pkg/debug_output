@@ -32,3 +32,15 @@
 -version: 2025.502.1956
 +version: 2025.502.2007
 ```
+
+## 2025.504.1609
+
+- echo() and dump() now support type=flatJson
+
+```
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+-version: 2025.502.2007
++version: 2025.504.1609
+-  std: ^2025.502.2358
+```

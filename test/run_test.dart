@@ -1,6 +1,5 @@
 import 'package:test/test.dart';
 import 'package:debug_output/debug_output.dart';
-import 'package:std/std.dart' as std_std;
 
 final testData = {
   'name': 'Joe',
@@ -28,18 +27,24 @@ main() {
       String result;
       result = echo(testData);
       expect(
-        result ==
-            r'''
+        result,
+        equals(r'''
 {name: Joe, url: null, ids: [10, 20, 30, null], desc: This is
 a multiline
 text, enabled: true}
-''',
-        isTrue,
+'''),
+      );
+      result = echo(testData, type: 'flatJson');
+      expect(
+        result,
+        equals(r'''
+{"name":"Joe","url":null,"ids":[10,20,30,null],"desc":"This is\na multiline\ntext","enabled":true}
+'''),
       );
       result = echo(testData, type: 'json');
       expect(
-        result ==
-            r'''
+        result,
+        equals(r'''
 {
   "name": "Joe",
   "url": null,
@@ -52,13 +57,12 @@ text, enabled: true}
   "desc": "This is\na multiline\ntext",
   "enabled": true
 }
-''',
-        isTrue,
+'''),
       );
       result = echo(testData, type: 'yaml');
       expect(
-        result ==
-            r'''
+        result,
+        equals(r'''
 [YAML]
 name: Joe
 url:
@@ -73,19 +77,17 @@ desc: |-
   text
 enabled: true
 [/YAML]
-''',
-        isTrue,
+'''),
       );
       result = dump(testData);
       expect(
-        result ==
-            std_std.pathExpand(r'''
-[DEBUG] @ main.<anonymous closure>.<anonymous closure> (file:///$HOME/pub/debug_output/test/run_test.dart:79:16)
+        result,
+        equals(r'''
+[DEBUG] @ main.<anonymous closure>.<anonymous closure> (file:///D:/home11/pub/debug_output/test/run_test.dart:82:16)
 {name: Joe, url: null, ids: [10, 20, 30, null], desc: This is
 a multiline
 text, enabled: true}
 '''),
-        isTrue,
       );
     });
   });

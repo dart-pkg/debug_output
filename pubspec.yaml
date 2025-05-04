@@ -1,6 +1,6 @@
 name: debug_output
 description: debug_output project
-version: 2025.502.2007
+version: 2025.504.1609
 homepage: 
 repository: https://github.com/dart-pkg/debug_output
 environment:
@@ -9,5 +9,4 @@ dependencies:
   text_serializer: ^2025.502.1757
 dev_dependencies:
   test: ^1.25.15
-  std: ^2025.502.2358
   lints: ^5.1.1

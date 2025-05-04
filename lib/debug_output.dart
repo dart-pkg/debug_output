@@ -21,17 +21,29 @@ String _adjustTextNewlines(String s) {
   return s;
 }
 
+String _toPrintable(dynamic x, String? type) {
+  if (type != null) {
+    type = type.toLowerCase();
+  }
+  try {
+    return switch (type) {
+      'flatjson' => text_serializer.toJson(x),
+      'json' => text_serializer.toJson(x, '  '),
+      'yaml' => '[YAML]\n${text_serializer.toYaml(x)}[/YAML]',
+      _ => (x is String) ? '`$x`' : '$x',
+    };
+  } catch (_) {
+    return (x is String) ? '`$x`' : '$x';
+  }
+}
+
 String echo(dynamic x, {String? title, bool silent = false, String? type}) {
-  String json = switch (type) {
-    'json' => text_serializer.toJson(x, '  '),
-    'yaml' => '[YAML]\n${text_serializer.toYaml(x)}[/YAML]',
-    _ => (x is String) ? '`$x`' : '$x',
-  };
+  String printable = _toPrintable(x, type);
   String output;
   if (title == null) {
-    output = json;
+    output = printable;
   } else {
-    output = '$title ==> $json';
+    output = '$title ==> $printable';
   }
   output = _adjustTextNewlines(output);
   if (!silent) {
@@ -41,11 +53,7 @@ String echo(dynamic x, {String? title, bool silent = false, String? type}) {
 }
 
 String dump(dynamic x, {String? title, bool silent = false, String? type}) {
-  String json = switch (type) {
-    'json' => text_serializer.toJson(x, '  '),
-    'yaml' => '[YAML]\n${text_serializer.toYaml(x)}[/YAML]',
-    _ => (x is String) ? '`$x`' : '$x',
-  };
+  String printable = _toPrintable(x, type);
   final lines = _textToLines(StackTrace.current.toString());
   String line = '';
   for (int i = 0; i < lines.length; i++) {
@@ -62,9 +70,9 @@ String dump(dynamic x, {String? title, bool silent = false, String? type}) {
   String mode = _isInDebugMode ? 'DEBUG' : 'RELEASE';
   String output;
   if (title == null) {
-    output = '[$mode] $lineInfo\n$json';
+    output = '[$mode] $lineInfo\n$printable';
   } else {
-    output = '[$mode] $lineInfo\n$title ==> $json';
+    output = '[$mode] $lineInfo\n$title ==> $printable';
   }
   output = _adjustTextNewlines(output);
   if (!silent) {
